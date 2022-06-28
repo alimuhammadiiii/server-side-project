@@ -2,17 +2,26 @@ export class Model {
   constructor() {
     this.todoDataBase = [];
     this.id = 0;
+    this.localStorageGet = JSON.parse(window.localStorage.getItem("todo"));
+
+    if (this.todoDataBase.length === 0 && this.localStorageGet !== null) {
+      this.localStorageGet.forEach((Element) => {
+        Element.id > this.id ? (this.id = Element.id) : (this.id = this.id);
+        this.todoDataBase.push(Element);
+      });
+    }
   }
 
   addTodo(todoText) {
     this.todo = {
-      id: this.id++,
+      id: ++this.id,
       complete: false,
       edit: false,
       todo: todoText,
     };
     this.todoDataBase.push(this.todo);
     this._renderTodo(this.todoDataBase);
+    localStorage.setItem("todo", JSON.stringify(this.todoDataBase));
   }
 
   deleteTodo(id) {
@@ -20,6 +29,7 @@ export class Model {
       return todo.id !== id;
     });
     this._renderTodo(this.todoDataBase);
+    localStorage.setItem("todo", JSON.stringify(this.todoDataBase));
   }
 
   completeTodo(id) {
@@ -29,6 +39,7 @@ export class Model {
       }
     });
     this._renderTodo(this.todoDataBase);
+    localStorage.setItem("todo", JSON.stringify(this.todoDataBase));
   }
 
   editTodo(todoId, todoText) {
@@ -39,6 +50,7 @@ export class Model {
       }
     });
     this._renderTodo(this.todoDataBase);
+    localStorage.setItem("todo", JSON.stringify(this.todoDataBase));
   }
 
   todoFilter(statusTodo) {

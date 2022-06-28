@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", async (req, res) => {
   try {
     const data = await fs.readFile("index.html");
-    console.log(data.toString());
+
     res.send(`${data.toString()}`);
   } catch (error) {}
 });
