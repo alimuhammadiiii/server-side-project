@@ -4,7 +4,25 @@ export class View {
     this.addTodo = document.querySelector(".add-todo");
     this.todoList = document.querySelector(".todo-list");
     this.filterTodo = document.querySelector(".todo-filter");
+    this.uploadTodo = document.querySelector(".upload-file");
+    this.downloadTodo = document.querySelector(".download-file");
     this.statusTodo = "";
+  }
+
+  bindUploadTodo(uploadTodoUser) {
+    this.uploadTodo.addEventListener("click", (event) => {
+      console.log("khosrow");
+      event.preventDefault();
+      uploadTodoUser();
+    });
+  }
+
+  bindDownloadTodo(downloadTodoUser) {
+    this.downloadTodo.addEventListener("click", async (event) => {
+      console.log("view is ok");
+      event.preventDefault();
+      await downloadTodoUser();
+    });
   }
 
   bindTodo(todo) {

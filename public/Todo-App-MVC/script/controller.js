@@ -8,6 +8,8 @@ export class Controller {
     this.view.bindCompleteTodo(this.handleCompleteTodo);
     this.view.bindEditTodo(this.handleEditTodo);
     this.view.bindFilterTodo(this.handleFilterTodo);
+    this.view.bindUploadTodo(this.handleUploadTodo);
+    this.view.bindDownloadTodo(this.handleDownloadTodo);
   }
 
   addTodoModel = (todoText) => {
@@ -31,5 +33,13 @@ export class Controller {
 
   handleFilterTodo = (statusTodo) => {
     this.model.todoFilter(statusTodo);
+  };
+
+  handleUploadTodo = () => {
+    this.model.uploadTodo();
+  };
+
+  handleDownloadTodo = () => {
+    this.model.downloadTodo();
   };
 }

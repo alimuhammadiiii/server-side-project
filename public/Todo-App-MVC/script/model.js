@@ -12,6 +12,40 @@ export class Model {
     }
   }
 
+  uploadTodo() {
+    fetch("/upload", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(this.todoDataBase),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
+  async downloadTodo() {
+    console.log("model is ok");
+    const url = "/download";
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log(data);
+    this.todoDataBase = data;
+    this._renderTodo(this.todoDataBase);
+    localStorage.setItem("todo", JSON.stringify(this.todoDataBase));
+    // console.log(this.todoDataBase);
+    // console.log(
+    //   localStorage.setItem("todo", JSON.stringify(this.todoDataBase))
+    // );
+
+    // updateShowDate();
+  }
+
   addTodo(todoText) {
     this.todo = {
       id: ++this.id,

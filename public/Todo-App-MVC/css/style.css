@@ -58,6 +58,7 @@ h1 {
   border: none;
   padding: 5px;
   outline: none;
+  margin-left: 65px;
 }
 
 .add-todo {
@@ -159,3 +160,28 @@ h1 {
   color: #fff;
   background-color: rgb(34, 41, 41);
 }
+
+.style-upload-donwload {
+  width: 100px;
+  margin-bottom: 2px;
+  height: 40px;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.style-upload-donwload:hover {
+  cursor: pointer;
+  background-color: rgb(54, 51, 53);
+  color: lightgray;
+}
+
+.header-todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
